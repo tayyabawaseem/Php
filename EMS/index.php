@@ -108,3 +108,26 @@ if(isset($_POST['save']))
 //     }
 // }
 ?>
+
+
+
+<!-- Delete -->
+
+<?php
+if(isset($_POST['delete']))
+{
+   $id = $_POST['searchId'];
+   $querry = "Delete From empform where Id = '$id'";
+   $data = mysqli_query($con , $querry);
+
+   if( $data )
+   {
+      echo "<script>alert('Record deleted successsfully')</script>";
+   }
+   else{
+      echo "<script>alert('Failed to Record delete')</script>";
+
+   }
+}
+
+?>
