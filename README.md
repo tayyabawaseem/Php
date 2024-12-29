@@ -7,7 +7,8 @@ This is a simple Employee Management System (EMS) developed using PHP and MySQL.
 - **Create:** Add new employees.  
 - **Read:** View employee details.  
 - **Update:** Edit employee information.  
-- **Delete:** Remove employee records.  
+- **Delete:** Remove employee records.
+-  **Search:** Search employees.   
 - User-friendly interface with Bootstrap.
 
 ## Technologies Used
