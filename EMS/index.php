@@ -46,11 +46,11 @@ if(isset($_POST['search']))
      <textarea name="address" placeholder="Address" class="h-100 pt-2"> <?php if(isset($_POST['search'])){echo $res['empAddress'];}?></textarea>
 
      <input type="submit" value="Search" name="search" class="btn btn-secondary fw-bold mx-1 my-2">
-     <input type="submit" value="Add" name="add" class="btn btn-info text-light fw-bold mx-1 my-2">
+     <!-- <input type="submit" value="Add" name="add" class="btn btn-info text-light fw-bold mx-1 my-2"> -->
      <input type="submit" value="Modify" name="modify" class="btn btn-warning text-light fw-bold mx-1 my-2">
      <input type="submit" value="Save" name="save" class="btn btn-success fw-bold mx-1 my-2">
-     <input type="submit" value="Delete" name="delete" class="btn btn-danger fw-bold mx-1 my-2">
-     <input type="submit" value="Clear" name="clear" class="btn btn-primary fw-bold mx-1 my-2">
+     <input type="submit" value="Delete" name="delete" class="btn btn-danger fw-bold mx-1 my-2" onclick="return confirmBox()">
+     <input type="reset" value="Clear" name="clear" class="btn btn-primary fw-bold mx-1 my-2">
     </div>
     </form>
     </div>
@@ -62,7 +62,12 @@ if(isset($_POST['search']))
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+<script>
+   function confirmBox()
+   {
+      return confirm('Are you sure want to delete this record?')
+   }
+</script>
 </body>
 </html>
 
@@ -129,5 +134,35 @@ if(isset($_POST['delete']))
 
    }
 }
+
+?>
+
+
+
+<!-- Modify -->
+<?php
+
+if(isset($_POST['modify']))
+{
+   $id  =  $_POST['searchId'];
+   $empName  =  $_POST['empName'];
+   $empEmail =  $_POST['empEmail'];
+   $gender   =  $_POST['gender'];
+   $depart   =  $_POST['depart'];
+   $address  =  $_POST['address'];
+
+   $querry = "Update empform SET empName = '$empName' , empEmail ='$empEmail' , empGender = '$gender', empDepart ='$depart' , empAddress ='$address' where Id = '$id'";
+
+   $data = mysqli_query($con , $querry);
+
+}  if( $data )
+{
+   echo "<script>alert('Record updated successsfully')</script>";
+}
+else{
+   echo "<script>alert('Failed to Record update')</script>";
+
+}
+
 
 ?>
